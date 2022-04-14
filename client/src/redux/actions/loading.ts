@@ -1,7 +1,5 @@
-export const LoadingActions = {
-    AUTH_LOADING: "AUTH_LOADING"
-}
+import { LoadingActionTypes, LoadingAction } from "../../models/redux-types/actions"
 
-export const loadingUsersAction = (payload: any) => {
-    return {type: LoadingActions.AUTH_LOADING, payload }
+export const loadingUsersAction = (payload: any): LoadingAction => {
+    return {type: LoadingActionTypes.AUTH_LOADING, payload }
 }

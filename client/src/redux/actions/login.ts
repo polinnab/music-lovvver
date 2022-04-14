@@ -1,7 +1,7 @@
-export const LoginActions = {
-    LOGIN: "LOGIN",
-    LOGOUT: "LOGOUT",
-    CHECK_AUTH: "CHECK_AUTH"
+export enum LoginActions {
+    LOGIN = "LOGIN",
+    LOGOUT = "LOGOUT",
+    CHECK_AUTH = "CHECK_AUTH"
 }
 
 export const loginAction = (payload: any) => {

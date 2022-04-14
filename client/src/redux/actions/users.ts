@@ -1,5 +1,5 @@
-export const UsersActions = {
-    GET_USERS: "GET_USERS"
+export enum UsersActions {
+    GET_USERS = "GET_USERS"
 }
 
 export const getUsersAction = (payload: any) => {

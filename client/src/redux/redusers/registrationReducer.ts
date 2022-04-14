@@ -2,9 +2,7 @@ import { IUser } from '../../models/IUser';
 import { RegistrationActions } from '../actions/registration';
 
 const initialState = {
-    user: {} as IUser,
-    isAuth: false,
-    isLoading: false
+    user: {} as IUser
 }
 
 export const registrationReducer = (state = initialState, action: any) => {
@@ -12,7 +10,7 @@ export const registrationReducer = (state = initialState, action: any) => {
 
     switch(type) {
         case RegistrationActions.REGISTRATION:
-            return {...state, isAuth: true, user: action.payload}
+            return {...state, user: payload}
 
         default:
             return state

@@ -1,22 +1,8 @@
-import React, {createContext} from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import Store from './store/store';
-import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-import { IUser } from './models/IUser';
 import { store } from './redux/store';
-
-// interface State {
-//   store: Store
-// }
-
-// const store = new Store();
-
-// export const Context = createContext<State>({
-//   store
-// })
-
 
 ReactDOM.render(
   <React.StrictMode>

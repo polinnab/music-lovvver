@@ -12,8 +12,6 @@ export const logoutAction = () => {
     return { type: LoginActions.LOGOUT }
 }
 
-export const checkAuthAction = () => {
-    return { type: LoginActions.CHECK_AUTH }
+export const checkAuthAction = (payload: any) => {
+    return { type: LoginActions.CHECK_AUTH, payload}
 }
-
-// TODO: branch use-redux-thunk

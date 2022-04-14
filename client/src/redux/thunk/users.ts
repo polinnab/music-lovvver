@@ -1,8 +1,4 @@
-import axios from "axios";
-import { API_URL } from "../../http";
 import { getUsersAction } from "../actions/users";
-import $api from "../../http";
-import { IUser } from "../../models/IUser";
 import UserService from "../../services/UserService";
 
 export const fetchUsers = () => {

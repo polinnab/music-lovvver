@@ -6,38 +6,28 @@ import UserService from './services/UserService';
 import {IUser} from './models/IUser';
 import { useSelector, RootStateOrAny, useDispatch } from 'react-redux'
 import { checkAuthAction, logoutAction } from './redux/actions/login';
-import { fetchUsers } from './redux/thunk-actions/fetchUsers';
+import { fetchUsers } from './redux/thunk/users';
+import { checkAuthThunk, logoutThunk } from './redux/thunk/login';
 
 function App() {
-  const dispatch = useDispatch()
-  const loginState = useSelector((state: RootStateOrAny) => state.login)
-  console.log('loginState: ', loginState)
-  const users = useSelector((state: RootStateOrAny) => state.users)
-  // const {store} = useContext(Context);
-  // const [users, setUsers] = useState<IUser[]>([])
+  const dispatch = useDispatch();
+  const { isAuth, user } = useSelector((state: RootStateOrAny) => state.login);
+  const users = useSelector((state: RootStateOrAny) => state.users.users);
+  const { isLoadingAuth } = useSelector((state: RootStateOrAny) => state.loading);
 
   useEffect(() => {
-    // if (localStorage.getItem('token')) {
-    //   dispatch(checkAuthAction())
-    // }
+    if (localStorage.getItem('token')) {
+      dispatch(checkAuthThunk())
+    }
   }, []);
 
-  // async function getUsers() {
-  //   try {
-  //     const response = await UserService.fetchUsers();
-  //     setUsers(response.data)
-  //   } catch(e) {
-  //     console.log(e)
-  //   }
-  // }
-
-  if(loginState.isLoading) {
+  if(isLoadingAuth) {
     return (
       <div>Loading...</div>
     )
   }
 
-  if (!loginState.isAuth) {
+  if (!isAuth) {
     return (
       <>
       <LoginForm/>
@@ -48,8 +38,8 @@ function App() {
 
   return (
     <div>
-      <h1>{loginState.isAuth ? `Welcome, ${loginState.user.email}!` : 'Log in, please'}</h1>
-      <button onClick={() => dispatch(logoutAction())}>Log out</button>
+      <h1>{isAuth ? `Welcome, ${user.email}!` : 'Log in, please'}</h1>
+      <button onClick={() => dispatch(logoutThunk())}>Log out</button>
       <div>
         <button onClick={() => dispatch(fetchUsers())}>Get Users</button>
       </div>

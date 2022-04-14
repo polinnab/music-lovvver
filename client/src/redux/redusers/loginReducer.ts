@@ -3,8 +3,7 @@ import { LoginActions } from '../actions/login';
 
 const initialState = {
     user: {} as IUser,
-    isAuth: false,
-    isLoading: false
+    isAuth: false
 }
 
 export const loginReducer = (state = initialState, action: any) => {
@@ -18,7 +17,7 @@ export const loginReducer = (state = initialState, action: any) => {
             return {...state, isAuth: false, user: {}}
         
         case LoginActions.CHECK_AUTH:
-            return {...state, isAuth: true, user: action.payload}
+            return {...state, isAuth: true, user: payload}
 
         default:
             return state

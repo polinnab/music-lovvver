@@ -1,5 +1,4 @@
 import React, {FC, useState} from 'react';
-import {observer} from 'mobx-react-lite'
 import { useDispatch } from 'react-redux'
 import { loginThunk } from '../redux/thunk/login';
 import { registrationThunk } from '../redux/thunk/registration';
@@ -27,4 +26,4 @@ const LoginForm: FC = () => {
     )
 }
 
-export default observer(LoginForm);
+export default LoginForm;

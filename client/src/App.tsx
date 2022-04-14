@@ -1,11 +1,7 @@
-import React, {useContext, useEffect, useState} from 'react';
-// import { Context } from '.';
+import React, {useEffect} from 'react';
 import LoginForm from './components/LoginFrom';
-import {observer} from "mobx-react-lite"
-import UserService from './services/UserService';
 import {IUser} from './models/IUser';
 import { useSelector, RootStateOrAny, useDispatch } from 'react-redux'
-import { checkAuthAction, logoutAction } from './redux/actions/login';
 import { fetchUsers } from './redux/thunk/users';
 import { checkAuthThunk, logoutThunk } from './redux/thunk/login';
 
@@ -50,4 +46,4 @@ function App() {
   );
 }
 
-export default observer(App);
+export default App;

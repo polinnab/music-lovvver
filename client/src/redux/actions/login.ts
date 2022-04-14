@@ -15,3 +15,5 @@ export const logoutAction = () => {
 export const checkAuthAction = () => {
     return { type: LoginActions.CHECK_AUTH }
 }
+
+// TODO: branch use-redux-thunk

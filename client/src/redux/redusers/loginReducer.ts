@@ -1,23 +1,23 @@
 import { IUser } from '../../models/IUser';
-import { LoginActions } from '../actions/login';
+import { LoginState } from '../../models/redux-types/states';
+import { LoginActionGeneral, LoginActionTypes } from '../../models/redux-types/actions';
 
-const initialState = {
+const initialState: LoginState = {
     user: {} as IUser,
     isAuth: false
 }
 
-export const loginReducer = (state = initialState, action: any) => {
-    const { type, payload } = action;
+export const loginReducer = (state = initialState, action: LoginActionGeneral): LoginState => {
 
-    switch(type) {
-        case LoginActions.LOGIN:
-            return {...state, isAuth: true, user: payload}
+    switch(action.type) {
+        case LoginActionTypes.LOGIN:
+            return {...state, isAuth: true, user: action.payload}
           
-        case LoginActions.LOGOUT:
-            return {...state, isAuth: false, user: {}}
+        case LoginActionTypes.LOGOUT:
+            return {...state, isAuth: false, user: {} as IUser}
         
-        case LoginActions.CHECK_AUTH:
-            return {...state, isAuth: true, user: payload}
+        case LoginActionTypes.CHECK_AUTH:
+            return {...state, isAuth: true, user: action.payload}
 
         default:
             return state

@@ -1,17 +1,15 @@
-export enum LoginActions {
-    LOGIN = "LOGIN",
-    LOGOUT = "LOGOUT",
-    CHECK_AUTH = "CHECK_AUTH"
+import { IUser } from "../../models/IUser";
+import { CheckAuthAction, LoginAction, LoginActionTypes, LogoutAction } from "../../models/redux-types/actions";
+
+
+export const loginAction = (payload: IUser): LoginAction => {
+    return { type: LoginActionTypes.LOGIN, payload }
 }
 
-export const loginAction = (payload: any) => {
-    return { type: LoginActions.LOGIN, payload }
+export const logoutAction = (): LogoutAction => {
+    return { type: LoginActionTypes.LOGOUT }
 }
 
-export const logoutAction = () => {
-    return { type: LoginActions.LOGOUT }
-}
-
-export const checkAuthAction = (payload: any) => {
-    return { type: LoginActions.CHECK_AUTH, payload}
+export const checkAuthAction = (payload: IUser): CheckAuthAction => {
+    return { type: LoginActionTypes.CHECK_AUTH, payload}
 }

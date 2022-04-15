@@ -1,5 +1,5 @@
 import {combineReducers} from 'redux'
-import { loadingReducer } from './loading';
+import { loadingReducer } from './loadingReducer';
 import { loginReducer } from './loginReducer';
 import { registrationReducer } from './registrationReducer';
 import { usersReducer } from './usersReducer';
@@ -10,3 +10,5 @@ export const rootReducer = combineReducers({
     users: usersReducer,
     loading: loadingReducer
 })
+
+export type RootState = ReturnType<typeof rootReducer>

@@ -1,7 +1,7 @@
-export enum UsersActions {
-    GET_USERS = "GET_USERS"
-}
+import { IUser } from "../../models/IUser"
+import { UsersAction, UsersActionTypes } from "../../models/redux-types/actions"
 
-export const getUsersAction = (payload: any) => {
-    return { type: UsersActions.GET_USERS, payload }
+
+export const getUsersAction = (payload: IUser[]): UsersAction => {
+    return { type: UsersActionTypes.GET_USERS, payload }
 }

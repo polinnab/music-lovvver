@@ -1,7 +1,6 @@
-export enum RegistrationActions {
-    REGISTRATION = "REGISTRATION"
-}
+import { IUser } from "../../models/IUser"
+import { RegistrationAction, RegistrationActionTypes } from "../../models/redux-types/actions"
 
-export const registrationAction = (payload: any) => {
-    return { type: RegistrationActions.REGISTRATION, payload }
+export const registrationAction = (payload: IUser): RegistrationAction => {
+    return { type: RegistrationActionTypes.REGISTRATION, payload}
 }

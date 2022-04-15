@@ -1,15 +1,16 @@
 import React, {useEffect} from 'react';
 import LoginForm from './components/LoginFrom';
 import {IUser} from './models/IUser';
-import { useSelector, RootStateOrAny, useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { fetchUsers } from './redux/thunk/users';
 import { checkAuthThunk, logoutThunk } from './redux/thunk/login';
+import { useTypedSelector } from './hooks';
 
 function App() {
   const dispatch = useDispatch();
-  const { isAuth, user } = useSelector((state: RootStateOrAny) => state.login);
-  const users = useSelector((state: RootStateOrAny) => state.users.users);
-  const { isLoadingAuth } = useSelector((state: RootStateOrAny) => state.loading);
+  const { isAuth, user } = useTypedSelector((state) => state.login);
+  const users = useTypedSelector((state) => state.users.users);
+  const { isLoadingAuth } = useTypedSelector((state) => state.loading);
 
   useEffect(() => {
     if (localStorage.getItem('token')) {

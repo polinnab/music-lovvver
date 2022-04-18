@@ -1,9 +1,12 @@
+import { Dispatch } from "react";
+import { LoginAction } from "../../models/redux/Login";
+import { RegistrationAction } from "../../models/redux/Registration";
 import AuthService from "../../services/AuthService";
 import { loginAction } from "../actions/login";
 import { registrationAction } from "../actions/registration";
 
 export const registrationThunk = (email: string, password: string) => {
-    return async function (dispatch: any) {
+    return async function (dispatch: Dispatch<RegistrationAction | LoginAction>) {
         try {
             const response = await AuthService.registration(email, password);
             localStorage.setItem('token', response.data.accessToken);

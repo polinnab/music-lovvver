@@ -1,5 +1,5 @@
 import { IUser } from "../../models/IUser";
-import { CheckAuthAction, LoginAction, LoginActionTypes, LogoutAction } from "../../models/redux-types/actions";
+import { CheckAuthAction, LoginAction, LoginActionTypes, LogoutAction } from "../../models/redux/Login";
 
 
 export const loginAction = (payload: IUser): LoginAction => {

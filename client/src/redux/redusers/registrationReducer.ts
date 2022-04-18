@@ -1,12 +1,11 @@
 import { IUser } from '../../models/IUser';
-import { RegistrationAction, RegistrationActionTypes } from '../../models/redux-types/actions';
-import { RegistrationState } from '../../models/redux-types/states';
+import { RegistrationAction, RegistrationActionTypes, RegistrationStateType } from '../../models/redux/Registration';
 
-const initialState: RegistrationState = {
+const initialState: RegistrationStateType = {
     user: {} as IUser
 }
 
-export const registrationReducer = (state = initialState, action: RegistrationAction): RegistrationState => {
+export const registrationReducer = (state = initialState, action: RegistrationAction): RegistrationStateType => {
     const { type, payload } = action;
 
     switch(type) {

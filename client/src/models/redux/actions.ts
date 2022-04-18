@@ -48,3 +48,5 @@ export interface UsersAction {
     type: UsersActionTypes.GET_USERS;
     payload: IUser[]
 }
+
+// TODO: need to refactor models repository

@@ -1,5 +1,4 @@
-import { LoadingActionTypes, LoadingAction } from "../../models/redux-types/actions";
-import { LoadingStateType } from "../../models/redux-types/states"
+import { LoadingActionTypes, LoadingAction, LoadingStateType } from "../../models/redux/Loading";
 
 const inilialState: LoadingStateType = {
     isLoadingAuth: false

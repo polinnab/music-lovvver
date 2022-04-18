@@ -1,13 +1,12 @@
 import { IUser } from '../../models/IUser';
 import { getUniqueData } from '../../shared/utils';
-import { UsersState } from '../../models/redux-types/states';
-import { UsersAction, UsersActionTypes } from '../../models/redux-types/actions';
+import { UsersAction, UsersActionTypes, UsersStateType } from '../../models/redux/Users';
 
-const initialState: UsersState = {
+const initialState: UsersStateType = {
     users: [] as IUser[]
 }
 
-export const usersReducer = (state = initialState, action: UsersAction): UsersState => {
+export const usersReducer = (state = initialState, action: UsersAction): UsersStateType => {
     const { type, payload } = action;
 
     switch(type) {

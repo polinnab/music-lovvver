@@ -4,7 +4,8 @@ import axios from "axios";
 import { API_URL } from "../../http";
 import { loadingUsersAction } from "../actions/loading";
 import { Dispatch } from "react";
-import { CheckAuthAction, LoadingAction, LoginAction, LogoutAction } from "../../models/redux-types/actions";
+import { CheckAuthAction, LoginAction, LogoutAction } from "../../models/redux/Login";
+import { LoadingAction } from "../../models/redux/Loading";
 
 export const loginThunk = (email: string, password: string) => {
     return async function(dispatch: Dispatch<LoginAction>) {

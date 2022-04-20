@@ -4,12 +4,19 @@ export interface RegistrationStateType {
     user: IUser
 }
 
-export enum RegistrationActionTypes {
-    REGISTRATION = "REGISTRATION"
+export enum RegistrationActions {
+    REGISTRATION = "REGISTRATION",
+    ASYNC_REGISTRATION = "ASYNC_REGISTRATION"
 }
 
 export interface RegistrationAction {
-    type: RegistrationActionTypes.REGISTRATION;
+    type: RegistrationActions.REGISTRATION;
     payload: IUser
 }
+
+export interface AsyncRegistrationAction {
+    type: RegistrationActions.ASYNC_REGISTRATION;
+    payload: any
+}
+
 

@@ -1,14 +1,12 @@
-import { IUser } from "../IUser";
-
 export interface LoadingStateType {
     isLoadingAuth: boolean
 }
 
-export enum LoadingActionTypes {
+export enum LoadingActions {
     AUTH_LOADING = "AUTH_LOADING"
 }
 
 export interface LoadingAction {
-    type: LoadingActionTypes.AUTH_LOADING;
+    type: LoadingActions.AUTH_LOADING;
     payload: boolean
 }

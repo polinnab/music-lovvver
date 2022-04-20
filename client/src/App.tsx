@@ -2,9 +2,9 @@ import React, {useEffect} from 'react';
 import LoginForm from './components/LoginFrom';
 import {IUser} from './models/IUser';
 import { useDispatch } from 'react-redux'
-import { fetchUsers } from './redux/thunk/users';
-import { checkAuthThunk, logoutThunk } from './redux/thunk/login';
 import { useTypedSelector } from './hooks';
+import { fetchUsersAction } from './redux/actions/users';
+import { asyncCheckAuthAction, asyncLogoutAction } from './redux/actions/login';
 
 function App() {
   const dispatch = useDispatch();
@@ -14,7 +14,7 @@ function App() {
 
   useEffect(() => {
     if (localStorage.getItem('token')) {
-      dispatch(checkAuthThunk())
+      dispatch(asyncCheckAuthAction())
     }
   }, []);
 
@@ -28,7 +28,7 @@ function App() {
     return (
       <>
       <LoginForm/>
-      <button onClick={() => dispatch(fetchUsers())}>Get Users</button>
+      <button onClick={() => dispatch(fetchUsersAction())}>Get Users</button>
       </>
     )
   }
@@ -36,9 +36,9 @@ function App() {
   return (
     <div>
       <h1>{isAuth ? `Welcome, ${user.email}!` : 'Log in, please'}</h1>
-      <button onClick={() => dispatch(logoutThunk())}>Log out</button>
+      <button onClick={() => dispatch(asyncLogoutAction())}>Log out</button>
       <div>
-        <button onClick={() => dispatch(fetchUsers())}>Get Users</button>
+        <button onClick={() => dispatch(fetchUsersAction())}>Get Users</button>
       </div>
       {users.map((user: IUser) => (
         <div key={user.email}>{user.email}</div>

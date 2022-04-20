@@ -5,24 +5,40 @@ export interface LoginStateType {
     isAuth: boolean
 }
 
-export enum LoginActionTypes {
+export enum LoginActions {
     LOGIN = "LOGIN",
+    ASYNC_LOGIN = "ASYNC_LOGIN",
     LOGOUT = "LOGOUT",
-    CHECK_AUTH = "CHECK_AUTH"
+    ASYNC_LOGOUT = "ASYNC_LOGOUT",
+    CHECK_AUTH = "CHECK_AUTH",
+    ASYNC_CHECK_AUTH = "ASYNC_CHECK_AUTH"
 }
 
 export interface LoginAction {
-    type: LoginActionTypes.LOGIN;
+    type: LoginActions.LOGIN;
     payload: IUser
+}
+
+export interface AsyncLoginAction {
+    type: LoginActions.ASYNC_LOGIN;
+    payload: any
 }
 
 export interface LogoutAction {
-    type: LoginActionTypes.LOGOUT
+    type: LoginActions.LOGOUT
+}
+
+export interface AsyncLogoutAction {
+    type: LoginActions.ASYNC_LOGOUT
 }
 
 export interface CheckAuthAction {
-    type: LoginActionTypes.CHECK_AUTH;
+    type: LoginActions.CHECK_AUTH;
     payload: IUser
 }
 
-export type LoginActionGeneral = LoginAction | LogoutAction | CheckAuthAction;
+export interface AsyncCheckAuthAction {
+    type: LoginActions.ASYNC_CHECK_AUTH;
+}
+
+export type LoginActionGeneral = LoginAction | LogoutAction | CheckAuthAction | AsyncLoginAction | AsyncLogoutAction | AsyncCheckAuthAction;

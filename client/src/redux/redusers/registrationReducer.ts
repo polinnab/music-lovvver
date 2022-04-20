@@ -1,5 +1,5 @@
 import { IUser } from '../../models/IUser';
-import { RegistrationAction, RegistrationActionTypes, RegistrationStateType } from '../../models/redux/Registration';
+import { RegistrationAction, RegistrationActions, RegistrationStateType } from '../../models/redux/Registration';
 
 const initialState: RegistrationStateType = {
     user: {} as IUser
@@ -9,7 +9,7 @@ export const registrationReducer = (state = initialState, action: RegistrationAc
     const { type, payload } = action;
 
     switch(type) {
-        case RegistrationActionTypes.REGISTRATION:
+        case RegistrationActions.REGISTRATION:
             return {...state, user: payload}
 
         default:

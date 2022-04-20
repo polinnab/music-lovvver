@@ -1,10 +1,12 @@
 import React, {FC, useState} from 'react';
 import { useDispatch } from 'react-redux'
+import { useTypedSelector } from '../hooks';
 import { asyncLoginAction } from '../redux/actions/login';
 import { asyncRegistrationAction } from '../redux/actions/registration';
 
 const LoginForm: FC = () => {
     const dispatch = useDispatch();
+    const { error } = useTypedSelector(state => state.login)
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
@@ -22,6 +24,7 @@ const LoginForm: FC = () => {
                 onChange={e => setPassword(e.target.value)} />
                 <button onClick={() => dispatch(asyncLoginAction({email, password}))}>Log in</button>
                 <button onClick={() => dispatch(asyncRegistrationAction({email, password}))}>Registration</button>
+            {error && <p>{error}</p>}
         </div>
     )
 }

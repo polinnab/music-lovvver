@@ -9,7 +9,7 @@ import { asyncCheckAuthAction, asyncLogoutAction } from './redux/actions/login';
 function App() {
   const dispatch = useDispatch();
   const { isAuth, user } = useTypedSelector((state) => state.login);
-  const users = useTypedSelector((state) => state.users.users);
+  const usersState = useTypedSelector((state) => state.users);
   const { isLoadingAuth } = useTypedSelector((state) => state.loading);
 
   useEffect(() => {
@@ -29,6 +29,7 @@ function App() {
       <>
       <LoginForm/>
       <button onClick={() => dispatch(fetchUsersAction())}>Get Users</button>
+      {usersState.error && <p>{usersState.error}</p>}
       </>
     )
   }
@@ -40,7 +41,10 @@ function App() {
       <div>
         <button onClick={() => dispatch(fetchUsersAction())}>Get Users</button>
       </div>
-      {users.map((user: IUser) => (
+
+      {usersState.error && <p>{usersState.error}</p>}
+
+      {usersState.users.map((user: IUser) => (
         <div key={user.email}>{user.email}</div>
       ))}
     </div>

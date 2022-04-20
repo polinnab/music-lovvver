@@ -3,7 +3,8 @@ import { LoginActionGeneral, LoginActions, LoginStateType } from '../../models/r
 
 const initialState: LoginStateType = {
     user: {} as IUser,
-    isAuth: false
+    isAuth: false,
+    error: ''
 }
 
 export const loginReducer = (state = initialState, action: LoginActionGeneral): LoginStateType => {
@@ -17,7 +18,8 @@ export const loginReducer = (state = initialState, action: LoginActionGeneral): 
         
         case LoginActions.CHECK_AUTH:
             return {...state, isAuth: true, user: action.payload}
-
+        case LoginActions.LOGIN_ERROR:
+            return {...state, error: action.payload }
         default:
             return state
     }

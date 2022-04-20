@@ -1,6 +1,6 @@
 import { put, takeEvery } from "@redux-saga/core/effects";
 import UserService from "../../services/UserService";
-import { getUsersAction } from "../actions/users"
+import { getUsersAction, setUsersErrorAction } from "../actions/users"
 import { IUser } from "../../models/IUser";
 import { UsersActions } from "../../models/redux/Users";
 
@@ -9,8 +9,14 @@ interface WorkerResponse {
 }
 
 function* fetchUsersWorker(): Generator<any, void, WorkerResponse> {
-    const response = yield UserService.fetchUsers()
-    yield put(getUsersAction(response.data))
+    try {
+        const response = yield UserService.fetchUsers()
+        yield put(getUsersAction(response.data))
+    } catch(e: any) {
+        console.log(e.response.data.message)
+        yield put(setUsersErrorAction(e.response.data.message))
+    }
+
 }
 
 export function* usersWatcher() {

@@ -25,3 +25,7 @@ export const checkAuthAction = (payload: IUser): CheckAuthAction => {
 export const asyncCheckAuthAction = (): AsyncCheckAuthAction => {
     return { type: LoginActions.ASYNC_CHECK_AUTH }
 }
+
+export const loginErrorAction = (payload: string) => {
+    return { type: LoginActions.LOGIN_ERROR, payload }
+}

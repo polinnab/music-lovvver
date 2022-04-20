@@ -2,7 +2,8 @@ import { IUser } from "../IUser";
 
 export interface LoginStateType {
     user: IUser;
-    isAuth: boolean
+    isAuth: boolean;
+    error: string
 }
 
 export enum LoginActions {
@@ -11,7 +12,8 @@ export enum LoginActions {
     LOGOUT = "LOGOUT",
     ASYNC_LOGOUT = "ASYNC_LOGOUT",
     CHECK_AUTH = "CHECK_AUTH",
-    ASYNC_CHECK_AUTH = "ASYNC_CHECK_AUTH"
+    ASYNC_CHECK_AUTH = "ASYNC_CHECK_AUTH",
+    LOGIN_ERROR = "LOGIN_ERROR"
 }
 
 export interface LoginAction {
@@ -41,4 +43,9 @@ export interface AsyncCheckAuthAction {
     type: LoginActions.ASYNC_CHECK_AUTH;
 }
 
-export type LoginActionGeneral = LoginAction | LogoutAction | CheckAuthAction | AsyncLoginAction | AsyncLogoutAction | AsyncCheckAuthAction;
+export interface LoginError {
+    type: LoginActions.LOGIN_ERROR;
+    payload: string
+}
+
+export type LoginActionGeneral = LoginAction | LogoutAction | CheckAuthAction | AsyncLoginAction | AsyncLogoutAction | AsyncCheckAuthAction | LoginError;

@@ -1,4 +1,4 @@
-import { put, takeEvery } from "@redux-saga/core/effects";
+import { put, takeLatest } from "@redux-saga/core/effects";
 import { AsyncRegistrationAction, RegistrationActions } from "../../models/redux/Registration";
 import { AuthResponse } from "../../models/response/AuthResponse";
 import AuthService from "../../services/AuthService";
@@ -14,12 +14,18 @@ function* registrationWorker(action: AsyncRegistrationAction): Generator<any, vo
         payload: {email, password}
     } = action;
 
-    const response = yield AuthService.registration(email, password)
-    localStorage.setItem('token', response.data.accessToken);
-    yield put(registrationAction(response.data.user));
-    yield put(loginAction(response.data.user))
+    try {
+        const response = yield AuthService.registration(email, password)
+        localStorage.setItem('token', response.data.accessToken);
+        yield put(registrationAction(response.data.user));
+        yield put(loginAction(response.data.user))
+    } catch(e: any) {
+        console.log(e.response.data.message)
+    }
+
+
 }
 
 export function* registrationWatcher() {
-    yield takeEvery(RegistrationActions.ASYNC_REGISTRATION, registrationWorker)
+    yield takeLatest(RegistrationActions.ASYNC_REGISTRATION, registrationWorker)
 }

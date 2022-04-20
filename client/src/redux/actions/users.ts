@@ -1,5 +1,5 @@
 import { IUser } from "../../models/IUser"
-import { FetchUsersAction, UsersAction, UsersActions } from "../../models/redux/Users";
+import { FetchUsersAction, SetErrorAction, UsersAction, UsersActions } from "../../models/redux/Users";
 
 
 export const getUsersAction = (payload: IUser[]): UsersAction => {
@@ -8,4 +8,8 @@ export const getUsersAction = (payload: IUser[]): UsersAction => {
 
 export const fetchUsersAction = (): FetchUsersAction => {
     return { type: UsersActions.FETCH_USERS }
+}
+ 
+export const setUsersErrorAction = (payload: string): SetErrorAction => {
+    return { type: UsersActions.SET_ERROR, payload }
 }
